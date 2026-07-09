@@ -1,13 +1,16 @@
-1class Solution:
-2    def twoSum(self, nums: List[int], target: int) -> List[int]:
-3        numMap = {}
-4        n = len(nums)
-5
-6        for i in range(n):
-7            complement = target - nums[i]
-8            if complement in numMap:
-9                return [numMap[complement], i]
-10            numMap[nums[i]] = i
-11
-12        return [] 
-13        
+1//hash-map approach 
+2
+3class Solution {
+4public:
+5    vector<int> twoSum(vector<int>& nums, int target) {
+6        unordered_map<int, int> hashMap;
+7
+8        for (int i=0;i<nums.size();i++){
+9            int comp = target - nums[i];
+10            if (hashMap.find(comp) != hashMap.end() && hashMap[comp] != i)
+11                return {i,hashMap[comp]};
+12            hashMap[nums[i]] = i;
+13        };
+14        return {};
+15    };
+16};
