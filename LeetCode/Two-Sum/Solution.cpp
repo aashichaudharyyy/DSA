@@ -1,4 +1,4 @@
-1//hash-map approach 
+1//hash-map approach - one pass approach - best solution
 2
 3class Solution {
 4public:
