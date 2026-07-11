@@ -47,6 +47,22 @@ DSA/
 - Arrays
 - Strings
 - Two Pointers
+- Hashing
+- Sliding Window
+- Prefix Sum
+- Binary Search
+- Linked List
+- Stack
+- Queue
+- Trees
+- Binary Search Trees
+- Heaps
+- Graphs
+- Backtracking
+- Greedy
+- Dynamic Programming
+- Tries
+- Bit Manipulation
 
 ---
 
