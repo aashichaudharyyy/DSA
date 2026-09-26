@@ -1,0 +1,13 @@
+1class Solution(object):
+2    def minQueenMoves(self, source, target):
+3        sr, sc = source
+4        tr, tc = target
+5        
+6        if source == target:
+7            return 0
+8
+9        # Same row, column, or diagonal
+10        if sr == tr or sc == tc or abs(sr - tr) == abs(sc - tc):
+11            return 1
+12
+13        return 2
