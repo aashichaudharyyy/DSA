@@ -1,0 +1,27 @@
+1class Solution(object):
+2    def maxEqualAdjacentPairs(self, nums):
+3        """
+4        :type nums: List[int]
+5        :rtype: int
+6        """
+7        base = 0
+8        pairs = {}
+9
+10        for i in range(len(nums) - 1):
+11            a = nums[i]
+12            b = nums[i + 1]
+13
+14            if a == b:
+15                base += 1
+16            else:
+17                pair = tuple(sorted((a, b)))
+18
+19                if pair in pairs:
+20                    pairs[pair] += 1
+21                else:
+22                    pairs[pair] = 1
+23
+24        if pairs:
+25            return base + max(pairs.values())
+26
+27        return base
