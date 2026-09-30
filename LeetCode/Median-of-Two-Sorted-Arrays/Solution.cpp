@@ -1,55 +1,38 @@
 1class Solution {
 2public:
 3    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-4
-5        // Always binary search on smaller array
+4        double median = 0.0;
+5        int left = 0;
 6        if(nums1.size() > nums2.size())
-7            return findMedianSortedArrays(nums2, nums1);
+7            swap(nums1, nums2);
 8
 9        int n = nums1.size();
 10        int m = nums2.size();
-11
-12        int leftsize = (n + m + 1) / 2;
+11        int leftSize = (n+m+1)/2;
+12        int right=n;
 13
-14        int left = 0;
-15        int right = n;
-16
-17        while(left <= right) {
-18
-19            int cutA = (left + right) / 2;
-20            int cutB = leftsize - cutA;
+14        while(left<=right){
+15            int cutA = (left+right)/2;
+16            int cutB = leftSize - cutA;
+17            int maxleftA = cutA == 0? INT_MIN : nums1[cutA-1];
+18            int maxleftB = cutB == 0? INT_MIN : nums2[cutB-1];
+19            int minrightA = cutA == n? INT_MAX : nums1[cutA];
+20            int minrightB = cutB == m? INT_MAX : nums2[cutB];
 21
-22            int leftmaxA = (cutA == 0) ? INT_MIN : nums1[cutA - 1];
-23            int rightminA = (cutA == n) ? INT_MAX : nums1[cutA];
-24
-25            int leftmaxB = (cutB == 0) ? INT_MIN : nums2[cutB - 1];
-26            int rightminB = (cutB == m) ? INT_MAX : nums2[cutB];
-27
-28            // A cut is too far right
-29            if(leftmaxA > rightminB) {
-30                right = cutA - 1;
-31            }
-32
-33            // A cut is too far left
-34            else if(leftmaxB > rightminA) {
-35                left = cutA + 1;
-36            }
-37
-38            // Correct partition
-39            else {
-40
-41                int leftmax = max(leftmaxA, leftmaxB);
-42                int rightmin = min(rightminA, rightminB);
-43
-44                // Odd
-45                if((n + m) % 2 == 1)
-46                    return leftmax;
-47
-48                // Even
-49                return (leftmax + rightmin) / 2.0;
-50            }
-51        }
-52
-53        return 0.0;
-54    }
-55};
+22            if(maxleftA > minrightB){
+23                right = cutA-1;//go left
+24            }else if(maxleftB > minrightA){
+25                left = cutA+1;//go right
+26            }else{
+27                if((n+m)%2==0){
+28                    median = (max(maxleftA, maxleftB) + min(minrightA, minrightB)) / 2.0;
+29                }else{
+30                    median = max(maxleftA, maxleftB);
+31                }
+32                return median;
+33            }
+34        }
+35        return 0.0;
+36
+37    }
+38};
