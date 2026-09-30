@@ -22,21 +22,20 @@
 22
 23    bool checkInclusion(string s1, string s2) {
 24        int left=0;
-25        int freq1[26] = {0};
-26        string s="";
-27        for(int right=0;right<s2.size();right++){
-28            //add s[right]
-29            s+=s2[right];
-30            if(right-left+1 == s1.size()){
-31                //check if permutation
-32
-33                if (permutation(s1,s)){
-34                    return true;
-35                }
-36                s = s.substr(1);
-37                left++;
-38            }
-39        }
-40        return false;
-41    }
-42};
+25        string s="";
+26        for(int right=0;right<s2.size();right++){
+27            //add s[right]
+28            s+=s2[right];
+29            if(right-left+1 == s1.size()){
+30                //check if permutation
+31
+32                if (permutation(s1,s)){
+33                    return true;
+34                }
+35                s = s.substr(1);
+36                left++;
+37            }
+38        }
+39        return false;
+40    }
+41};
