@@ -8,10 +8,10 @@
 8                depth++;
 9            }
 10            answer.push_back(depth%2);
-11            
-12            if(seq[i]==')'){
-13                depth--;
-14            }
+11            if(seq[i]==')'){
+12                depth--;
+13            }
+14
 15        }
 16
 17        return answer;
